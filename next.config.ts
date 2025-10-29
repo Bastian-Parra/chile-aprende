@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
+import path from "path";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  turbopack: {
+    root: "C:\\Users\\basti\\desktop\\dev\\projects\\chile-aprende",
+  },
 };
 
 export default nextConfig;
