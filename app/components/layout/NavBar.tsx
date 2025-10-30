@@ -20,42 +20,60 @@ export default function NavBar() {
         <li>
           <Link
             href="/play"
-            className="flex gap-1 border-2 rounded-3xl px-3 py-1 text-primarygreen hover:bg-primarygreen hover:text-white transition-colors duration-200 ease-in-out"
+            className="flex gap-2 border-2 rounded-3xl px-3 py-1 text-primarygreen hover:bg-primarygreen hover:text-white transition-colors duration-200 ease-in-out"
           >
-            Jugar <NavBarIcons.play />
+            <NavBarIcons.play /> Jugar
           </Link>
-        </li>
-        <li>
-          {pathname === "/missions" ? (
-            <Link
-              href="/missions"
-              className="flex gap-1 px-3 py-1 text-primarygreen font-bold border-b-2 border-primarygreen"
-            >
-              Misiones
-            </Link>
-          ) : (
-            <Link href="/missions" className="flex gap-1 px-3 py-1">
-              Misiones
-            </Link>
-          )}
         </li>
         <li>
           {pathname === "/leaderboard" ? (
             <Link
               href="/leaderboard"
-              className="flex gap-1 px-3 py-1 font-bold border-b-2 border-primarygreen text-primarygreen"
+              className="flex gap-2 px-3 py-1 font-bold border-b-2 border-primarygreen text-primarygreen"
             >
-              Ranking
+              <span className="text-yellow-400"><NavBarIcons.trophy /></span> Ranking
             </Link>
           ) : (
-            <Link href="/leaderboard" className="flex gap-1 px-3 py-1">
-              Ranking
+            <Link href="/leaderboard" className="flex gap-2 px-3 py-1">
+              <span className="text-yellow-400"><NavBarIcons.trophy /></span> Ranking
             </Link>
           )}
         </li>
+        <SignedIn>
+          <li>
+            {pathname === "/missions" ? (
+              <Link
+                href="/missions"
+                className="flex gap-2 px-3 py-1 text-primarygreen font-bold border-b-2 border-primarygreen"
+              >
+                <NavBarIcons.mission /> Misiones
+              </Link>
+            ) : (
+              <Link href="/missions" className="flex gap-2 px-3 py-1">
+                <NavBarIcons.mission /> Misiones
+              </Link>
+            )}
+          </li>
+        </SignedIn>
       </ul>
       <SignedIn>
-        <UserButton />
+        <ul className="flex gap-15">
+          <li>
+            {pathname === "/profile" ? (
+              <Link
+                href="/profile"
+                className="flex gap-2 px-3 py-1 text-primarygreen font-bold border-b-2 border-primarygreen"
+              >
+                <NavBarIcons.profile /> Mi Perfil
+              </Link>
+            ) : (
+              <Link href="/profile" className="flex gap-2 px-3 py-1">
+                <NavBarIcons.profile /> Mi Perfil
+              </Link>
+            )}
+          </li>
+          <UserButton />
+        </ul>
       </SignedIn>
       <SignedOut>
         <SignInButton mode="modal">
