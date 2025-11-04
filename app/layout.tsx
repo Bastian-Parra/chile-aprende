@@ -4,7 +4,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { esES } from "@clerk/localizations";
 import Header from "./components/layout/Header";
-import UserSync from "./components/user/UserSync";
+import { UserSync } from "./components/user/UserSync";
 
 const onest = Onest({
   subsets: ["latin"],
