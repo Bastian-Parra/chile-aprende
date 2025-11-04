@@ -1,7 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  SignUpButton,
+  UserButton,
+} from "@clerk/nextjs";
 import { NavBarIcons } from "../icons/NavBarIcons";
 import { usePathname } from "next/navigation";
 export default function NavBar() {
@@ -82,11 +88,18 @@ export default function NavBar() {
         </ul>
       </SignedIn>
       <SignedOut>
-        <SignInButton mode="modal">
-          <button className="bg-primarygreen px-3 py-1 font-bold rounded hover:bg-primarygreen/80 transition-colors duration-200 ease-in-out cursor-pointer">
-            Ingresar
-          </button>
-        </SignInButton>
+        <div className=" flex gap-5">
+          <SignInButton mode="modal">
+            <button className="bg-primarygreen px-3 py-1 font-bold rounded hover:bg-primarygreen/80 transition-colors duration-200 ease-in-out cursor-pointer">
+              Ingresar
+            </button>
+          </SignInButton>
+          <SignUpButton mode="modal">
+            <button className="bg-none px-3 py-1 font-bold rounded hover:bg-primarygreen hover:text-white transition-colors duration-200 ease-in-out cursor-pointer border border-primarygreen text-primarygreen">
+              Registrarse
+            </button>
+          </SignUpButton>
+        </div>
       </SignedOut>
     </nav>
   );
