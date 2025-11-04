@@ -31,11 +31,17 @@ export default function NavBar() {
               href="/leaderboard"
               className="flex gap-2 px-3 py-1 font-bold border-b-2 border-primarygreen text-primarygreen"
             >
-              <span className="text-yellow-400"><NavBarIcons.trophy /></span> Ranking
+              <span className="text-yellow-400">
+                <NavBarIcons.trophy />
+              </span>{" "}
+              Ranking
             </Link>
           ) : (
             <Link href="/leaderboard" className="flex gap-2 px-3 py-1">
-              <span className="text-yellow-400"><NavBarIcons.trophy /></span> Ranking
+              <span className="text-yellow-400">
+                <NavBarIcons.trophy />
+              </span>{" "}
+              Ranking
             </Link>
           )}
         </li>

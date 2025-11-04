@@ -7,9 +7,9 @@ export default function Profile() {
 
   return (
     <>
-      <h1 className="text-4xl font-bold">Mi progreso</h1>
+      <h1 className="text-4xl font-extrabold">Mi progreso</h1>
       <header className="shadow-xl overflow-hidden rounded-2xl border border-gray-100">
-        <div className="w-full h-70 flex gap-10 items-center">
+        <div className="w-full h-80 flex gap-10 items-center">
           <div
             className="h-full w-2/7 bg-amber-50 rounded-bl-2xl rounded-tl-2xl overflow-hidden"
             style={{
