@@ -4,6 +4,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { esES } from "@clerk/localizations";
 import Header from "./components/layout/Header";
+import UserSync from "./components/user/UserSync";
 
 const onest = Onest({
   subsets: ["latin"],
@@ -26,6 +27,7 @@ export default function RootLayout({
         <body className={onest.className}>
           <Header />
           <main className="w-6xl m-auto h-screen flex flex-col gap-5 mt-10">
+            <UserSync />
             {children}
           </main>
         </body>

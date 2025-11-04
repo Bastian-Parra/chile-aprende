@@ -15,13 +15,13 @@ export default function NavBar() {
 
   return (
     <nav className="w-6xl mx-auto flex justify-between items-center">
-      <a href="/" className="text-2xl font-bold p-0 flex items-center">
+      <Link href="/" className="text-2xl font-bold p-0 flex items-center">
         <span className="flex items-center gap-1">
           <NavBarIcons.book2 />
           Chile
         </span>
         <span className="text-primarygreen p-0">Aprende</span>
-      </a>
+      </Link>
       <ul className="flex gap-15">
         <li>
           <Link
