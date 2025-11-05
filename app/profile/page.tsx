@@ -21,6 +21,7 @@ export default function Profile() {
           <div>
             <h2 className="text-2xl font-bold">{user?.fullName}</h2>
             <p className="text-md">{user?.emailAddresses[0].emailAddress}</p>
+            
           </div>
         </div>
       </header>
