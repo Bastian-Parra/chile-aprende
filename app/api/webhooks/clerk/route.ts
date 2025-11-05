@@ -36,7 +36,7 @@ export async function POST(req: Request) {
     const email = email_addresses[0]?.email_address;
 
     // Crear usuario en Supabase
-    const { error } = await supabase.from("user").insert([
+    const { error } = await supabase.from("users").insert([
       {
         clerk_id: id,
         email,
