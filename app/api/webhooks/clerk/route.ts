@@ -32,16 +32,15 @@ export async function POST(req: Request) {
   const { type, data } = event as WebhookEvent;
 
   if (type === "user.created") {
-    const { id, email_addresses, first_name, last_name, image_url } = data;
+    const { id, email_addresses, username } = data;
     const email = email_addresses[0]?.email_address;
 
     // Crear usuario en Supabase
     const { error } = await supabase.from("users").insert([
       {
-        clerk_id: id,
+        id,
         email,
-        name: `${first_name ?? ""} ${last_name ?? ""}`.trim(),
-        avatar_url: image_url,
+        username,
       },
     ]);
 
