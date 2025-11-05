@@ -32,7 +32,7 @@ export async function POST(req: Request) {
   const { type, data } = event as WebhookEvent;
 
   if (type === "user.created") {
-    const { id, email_addresses, username } = data;
+    const { id, email_addresses, first_name, last_name } = data;
     const email = email_addresses[0]?.email_address;
 
     // Crear usuario en Supabase
@@ -40,7 +40,7 @@ export async function POST(req: Request) {
       {
         id,
         email,
-        username,
+        username: first_name + " " + last_name,
       },
     ]);
 
