@@ -33,21 +33,19 @@ declare namespace GeoJSON {
   }
 }
 
-declare module "geojson" {
-  export type Position = GeoJSON.Position;
-  export interface Geometry extends GeoJSON.Geometry {}
-  export interface Point extends GeoJSON.Point {}
-  export interface Polygon extends GeoJSON.Polygon {}
-  export interface MultiPolygon extends GeoJSON.MultiPolygon {}
-  export interface Feature<G = GeoJSON.Geometry, P = Record<string, any>>
-    extends GeoJSON.Feature<G, P> {}
-  export interface FeatureCollection<
-    G = GeoJSON.Geometry,
-    P = Record<string, any>
-  > extends GeoJSON.FeatureCollection<G, P> {}
+declare module "*.geojson" {
+  const value: RegionFeature;
+  export default value;
 }
 
-declare module "*.geojson" {
-  const value: any;
-  export default value;
+export interface RegionFeature {
+  type: "Feature";
+  geometry: {
+    type: "Polygon";
+    coordinates: number[][];
+  };
+  properties: {
+    name: string;
+    code: string;
+  };
 }
