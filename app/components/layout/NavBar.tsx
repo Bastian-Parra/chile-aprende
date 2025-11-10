@@ -10,6 +10,9 @@ import {
 } from "@clerk/nextjs";
 import { NavBarIcons } from "../icons/NavBarIcons";
 import { usePathname } from "next/navigation";
+import LoginButton from "../ui/LoginButton";
+import RegisterButton from "../ui/RegisterButton";
+
 export default function NavBar() {
   const pathname = usePathname();
 
@@ -90,14 +93,10 @@ export default function NavBar() {
       <SignedOut>
         <div className=" flex gap-5">
           <SignInButton mode="modal">
-            <button className="bg-primarygreen px-3 py-1 font-bold rounded hover:bg-primarygreen/80 transition-colors duration-200 ease-in-out cursor-pointer">
-              Ingresar
-            </button>
+            <LoginButton text="Ingresar" />
           </SignInButton>
           <SignUpButton mode="modal">
-            <button className="bg-none px-3 py-1 font-bold rounded hover:bg-primarygreen hover:text-white transition-colors duration-200 ease-in-out cursor-pointer border border-primarygreen text-primarygreen">
-              Registrarse
-            </button>
+            <RegisterButton text="Registrarse" />
           </SignUpButton>
         </div>
       </SignedOut>

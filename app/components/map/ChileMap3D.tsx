@@ -5,7 +5,6 @@ import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { RegionFeature } from "@/types/geojson";
 import * as turf from "@turf/turf";
-import { features } from "process";
 
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN!;
 
@@ -62,17 +61,22 @@ const ChileMap = ({
 
         const centroids = {
           type: "FeatureCollection",
-          features: chileData.features.map((feature: GeoJSON.Feature<GeoJSON.Geometry, RegionFeatureProperties>) => {
-            return turf.centroid(feature, {
-              properties: {
-                shapeName: feature.properties?.shapeName,
-              }
-            });
-          })
-        }
-        
-        const chileGeoJSON = turf.featureCollection(chileData.features);
-        
+          features: chileData.features.map(
+            (
+              feature: GeoJSON.Feature<
+                GeoJSON.Geometry,
+                RegionFeatureProperties
+              >
+            ) => {
+              return turf.centroid(feature, {
+                properties: {
+                  shapeName: feature.properties?.shapeName,
+                },
+              });
+            }
+          ),
+        };
+
         if (
           !chileData ||
           !chileData.features ||
@@ -145,8 +149,7 @@ const ChileMap = ({
               "#C1C0B9",
               "Región de Magallanes y Antártica Chilena",
               "#5C5470",
-              /* default color */
-              "#CCCCCC",
+              "#CCCCCC", // color default
             ],
             "fill-opacity": 0.5,
             "fill-outline-color": "#FFFFFF",
@@ -156,14 +159,14 @@ const ChileMap = ({
         map.current.addSource("region-labels", {
           type: "geojson",
           data: centroids as GeoJSON.FeatureCollection,
-        })
+        });
 
         map.current.addLayer({
           id: "region-labels-layer",
           type: "symbol",
           source: "region-labels",
           layout: {
-            "text-field": ["get", "shapeName"], // el texto que se mostrará
+            "text-field": ["get", "shapeName"], // el texto que se muestra
             "text-size": 12,
             "text-anchor": "center",
             "text-allow-overlap": true,

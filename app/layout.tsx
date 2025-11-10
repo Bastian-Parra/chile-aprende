@@ -26,7 +26,7 @@ export default function RootLayout({
       <html lang="es">
         <body className={onest.className}>
           <Header />
-          <main className="w-6xl m-auto h-screen flex flex-col gap-5 mt-10">
+          <main className="w-6xl m-auto h-screen flex flex-col gap-5 mt-30">
             <UserSync />
             {children}
           </main>
