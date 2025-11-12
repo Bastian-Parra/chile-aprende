@@ -5,6 +5,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { esES } from "@clerk/localizations";
 import Header from "./components/layout/Header";
 import { UserSync } from "./components/user/UserSync";
+import Footer from "./components/layout/Footer";
 
 const onest = Onest({
   subsets: ["latin"],
@@ -30,6 +31,7 @@ export default function RootLayout({
             <UserSync />
             {children}
           </main>
+          <Footer />
         </body>
       </html>
     </ClerkProvider>
