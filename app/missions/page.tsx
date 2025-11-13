@@ -21,7 +21,7 @@ export default async function MissionsPage() {
         {data.map((mission) => (
           <div
             key={mission.id}
-            className="w-60 flex flex-col gap-5 justify-center items-center rounded-xl overflow-hidden pb-5 shadow-md hover:shadow-lg transition-shadow"
+            className="w-60 flex flex-col gap-5 justify-center items-center rounded-xl overflow-hidden pb-5 shadow-md hover:shadow-lg transition-shadow border border-gray-300 "
           >
             <div
               className="w-full h-50 flex justify-center items-end p-5"
@@ -34,7 +34,7 @@ export default async function MissionsPage() {
             >
               <h2 className="text-white font-bold text-xl">{mission.title}</h2>
             </div>
-            <Link href={`/missions/${mission.id}`} className="w-7/8 p-2 bg-primarygreen text-white font-bold rounded-xl hover:bg-primarygreen/80 transition-colors cursor-pointer ">
+            <Link href={`/missions/${mission.id}`} className="w-7/8 p-2 bg-primarygreen text-white font-bold rounded-xl text-center hover:bg-primarygreen/80 transition-colors cursor-pointer ">
               Ver Mision
             </Link>
           </div>
