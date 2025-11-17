@@ -27,12 +27,24 @@ export default function NavBar() {
       </Link>
       <ul className="flex gap-15">
         <li>
-          <Link
-            href="/play"
-            className="flex gap-2 border-2 rounded-3xl px-3 py-1 text-primarygreen hover:bg-primarygreen hover:text-white transition-colors duration-200 ease-in-out"
-          >
-            <NavBarIcons.play /> Jugar
-          </Link>
+          {pathname === "/play" ?  (
+            <Link
+              href="/play"
+              className="flex gap-2 px-3 py-1 font-bold border-2 border-primarygreen bg-primarygreen text-white rounded-full "
+            >
+              <span>
+                <NavBarIcons.play />
+              </span>{" "}
+              Jugar
+            </Link>
+          ) : (
+            <Link href="/play" className="flex gap-2 px-3 py-1 bg-white text-primarygreen rounded-full border-2 border-primarygreen">
+              <span>
+                <NavBarIcons.play />
+              </span>{" "}
+              Jugar
+            </Link>
+          )}
         </li>
         <li>
           {pathname === "/leaderboard" ? (

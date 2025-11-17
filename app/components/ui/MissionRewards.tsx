@@ -26,7 +26,10 @@ export default function MissionRewards({
         <span></span>
       </div>
 
-      <button className="bg-[#1e90ff] w-full p-2 rounded-md text-white font-bold hover:bg-[#1e90ff]/80 transition-colors cursor-pointer">
+      <button className="bg-[#1e90ff] w-full p-2 rounded-md text-white font-bold hover:bg-[#1e90ff]/80 transition-colors cursor-pointer flex gap-2 justify-center items-center">
+        <span>
+          <MissionsIcons.rocket />
+        </span>
         Comenzar Misión
       </button>
     </div>

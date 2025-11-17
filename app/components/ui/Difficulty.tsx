@@ -2,7 +2,7 @@ import { MissionsIcons } from "../icons/MissionsIcons";
 
 export default function Difficulty({ difficulty }: { difficulty: string }) {
   return (
-    <p className="text-xl flex gap-1 shadow-md border border-gray-200 p-1 rounded">
+    <p className="text-xl flex gap-1 p-1 rounded">
       <span
         className={
           difficulty === "medium"

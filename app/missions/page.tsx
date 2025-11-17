@@ -1,6 +1,7 @@
 "use server";
 import { supabase } from "@/lib/supabase-server";
 import Link from "next/link";
+import Difficulty from "../components/ui/Difficulty";
 
 export default async function MissionsPage() {
   const { data, error } = await supabase
