@@ -1,7 +1,6 @@
 "use server";
 import { supabase } from "@/lib/supabase-server";
 import Link from "next/link";
-import Difficulty from "../components/ui/Difficulty";
 
 export default async function MissionsPage() {
   const { data, error } = await supabase
@@ -27,7 +26,7 @@ export default async function MissionsPage() {
             <div
               className="w-full h-50 flex justify-center items-end p-5"
               style={{
-                backgroundImage: `url(${imageUrl}${mission.id}.webp)`,
+                backgroundImage: `url(${imageUrl}${mission.id}/${mission.id}.webp)`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 width: "100%",

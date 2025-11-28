@@ -1,11 +1,16 @@
+'use client'
+
+import Link from "next/link";
 import { MissionsIcons } from "../icons/MissionsIcons";
 
 export default function MissionRewards({
   xp,
   items,
+  id
 }: {
   xp: number;
   items: string[];
+  id: string
 }) {
   console.log(items);
   return (
@@ -26,12 +31,12 @@ export default function MissionRewards({
         <span></span>
       </div>
 
-      <button className="bg-[#1e90ff] w-full p-2 rounded-md text-white font-bold hover:bg-[#1e90ff]/80 transition-colors cursor-pointer flex gap-2 justify-center items-center">
+      <Link href={`/missions/${id}/start`} className="bg-[#1e90ff] w-full p-2 rounded-md text-white font-bold hover:bg-[#1e90ff]/80 transition-colors cursor-pointer flex gap-2 justify-center items-center">
         <span>
           <MissionsIcons.rocket />
         </span>
         Comenzar Misión
-      </button>
+      </Link>
     </div>
   );
 }

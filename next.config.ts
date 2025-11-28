@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "twfebreuxttgjfydquft.supabase.co",
-        pathname: "/storage/v1/object/public/missions-images/*",
+        pathname: "/storage/**",
       }
     ]
   }

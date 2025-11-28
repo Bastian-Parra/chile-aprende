@@ -28,16 +28,12 @@ export default async function MissionPage({
 }: {
   params: Promise<{ id: string }>;
 }) {
-  const missionId = (await params).id;
-
-  console.log("id:", missionId);
+  const missionId = (await params).id
 
   const { data, error } = await supabase
     .from("missions")
     .select("*")
     .eq("id", missionId);
-
-  console.log(data);
 
   if (error) {
     throw error;
@@ -74,6 +70,7 @@ export default async function MissionPage({
         <section className="w-1/4">
           {/* TODO: Terminar esta parte de los items de recompensas */}
           <MissionRewards
+            id={missionId}
             xp={mission.xp_reward}
             items={
               Array.isArray(mission.rewards)
