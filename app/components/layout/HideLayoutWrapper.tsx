@@ -1,7 +1,6 @@
 "use client";
 import Header from "./Header";
 import Footer from "./Footer";
-import { UserSync } from "../user/UserSync";
 import { usePathname } from "next/navigation";
 
 export default function HideLayoutWrapper({
@@ -22,7 +21,6 @@ export default function HideLayoutWrapper({
     <>
       <Header />
       <main className="w-6xl m-auto min-h-screen flex flex-col gap-5 mt-30">
-        <UserSync />
         {children}
       </main>
       <Footer />

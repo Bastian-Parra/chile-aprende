@@ -5,7 +5,6 @@ import Image from "next/image";
 import ResourceItem from "./ResourceItem";
 import HudResources from "./HudResource";
 import { toast } from "../../messages/Toast";
-import { markExplorationCompleted } from "@/app/missions/[id]/start/explore/actions";
 
 interface Resource {
   id: string;
@@ -61,7 +60,13 @@ export default function ExplorationScreen({
 
   const finishExploration = async () => {
     try {
-      await markExplorationCompleted(missionId);
+      await fetch(`/api/missions/complete-part`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ missionId, part: "exploration" }),
+      });
 
       window.location.href = `/missions/${missionId}/start`; // redirige al usuario al inicio de la misión
     } catch (error) {

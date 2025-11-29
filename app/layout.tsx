@@ -5,6 +5,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { esES } from "@clerk/localizations";
 import HideLayoutWrapper from "./components/layout/HideLayoutWrapper";
 import ToastProvider from "./components/messages/Toast";
+import { UserSync } from "./components/user/UserSync";
 
 const onest = Onest({
   subsets: ["latin"],
@@ -25,6 +26,7 @@ export default function RootLayout({
     <ClerkProvider localization={esES}>
       <html lang="es">
         <body className={onest.className}>
+          <UserSync />
           <HideLayoutWrapper>
             <ToastProvider/>
               {children}
