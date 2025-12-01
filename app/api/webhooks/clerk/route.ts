@@ -33,7 +33,8 @@ export async function POST(req: Request) {
   const { type, data } = event as WebhookEvent;
 
   if (type === "user.created") {
-    const { id, email_addresses, first_name, last_name } = data;
+    const { id, email_addresses, first_name, last_name, image_url} = data;
+    console.log(image_url)
     const email = email_addresses[0]?.email_address;
 
     // Crear usuario en Supabase
@@ -42,6 +43,7 @@ export async function POST(req: Request) {
         id,
         email,
         username: first_name + " " + last_name,
+        image_url: image_url
       },
     ]);
 
@@ -51,7 +53,7 @@ export async function POST(req: Request) {
         level: 1,
         total_xp: 0,
         game_state: {},
-        completed_missions: {},
+        completed_missions: [],
         unlocked_achievements: {},
       },
     ]);

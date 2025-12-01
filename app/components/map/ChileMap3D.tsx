@@ -96,7 +96,7 @@ const ChileMap = ({
 
         const pioneros = missions.find(
           (m: Mission) =>
-            m.region === "Región de Magallanes y Antártica Chilena"
+            m.region === "Región de Aysen del Gral.Ibañez del Campo"
         );
 
         const translateDifficulty = (difficulty: string) => {

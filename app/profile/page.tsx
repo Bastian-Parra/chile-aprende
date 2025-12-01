@@ -7,13 +7,28 @@ import Image from "next/image";
 export default function Profile() {
   const { user } = useUser();
 
-  const [profile, setProfile] = useState<{
+  interface MissionData {
+    start_bg: string;
+    intro: {
+      title: string;
+    };
+  }
+
+  interface CompletedMission {
+    id: string | number;
+    mission_data: MissionData;
+    region: string;
+  }
+
+  interface UserProfile {
     level: number;
     totalXp: number;
     nextLevelXp: number;
     xpInCurrentLevel: number;
-    completed: any[];
-  } | null>(null);
+    completed: CompletedMission[];
+  }
+
+  const [profile, setProfile] = useState<UserProfile | null>(null);
 
   useEffect(() => {
     const loadData = async () => {
@@ -76,7 +91,6 @@ export default function Profile() {
         </div>
       </header>
 
-      {/* ================= MISIONS COMPLETED ================= */}
       <h2 className="text-3xl font-bold mt-10 mb-4">Misiones completadas</h2>
 
       {!profile?.completed?.length && (
