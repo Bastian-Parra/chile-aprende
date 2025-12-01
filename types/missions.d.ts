@@ -6,6 +6,27 @@ export interface MissionData {
   start_bg: string;
   objective: MissionObjective;
   completion: MissionCompletion;
+  building: MissionBuilding;
+  search: MissionSearch
+}
+
+export interface MissionSearch {
+  background: string;
+  dialogues: Dialogue[];
+}
+
+
+export interface MissionBuilding {
+  background: string;
+  steps: MissionBuildingStep[];
+  completion_message?: string;
+}
+
+export interface MissionBuildingStep {
+  id: string;
+  label: string;
+  required: Record<string, number>;
+  hint?: string;
 }
 
 export interface MissionHUD {

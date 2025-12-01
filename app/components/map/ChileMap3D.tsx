@@ -16,6 +16,21 @@ const ChileMap = ({
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<mapboxgl.Map | null>(null);
 
+  interface Mission {
+    id: string;
+    region: string;
+    title: string;
+    image_url: string;
+    difficulty: string;
+  }
+
+  interface CentroidFeature extends GeoJSON.Feature {
+    properties: {
+      shapeName: string;
+    };
+    geometry: GeoJSON.Point;
+  }
+
   useEffect(() => {
     if (!mapContainer.current) return;
 
@@ -76,6 +91,56 @@ const ChileMap = ({
             }
           ),
         };
+        const missionsRes = await fetch("/api/missions");
+        const missions: Mission[] = await missionsRes.json();
+
+        const pioneros = missions.find(
+          (m: Mission) =>
+            m.region === "Región de Magallanes y Antártica Chilena"
+        );
+
+        const translateDifficulty = (difficulty: string) => {
+          switch (difficulty) {
+            case "easy":
+              return "Fácil";
+            case "medium":
+              return "Medio";
+            case "hard":
+              return "Difícil";
+            default:
+              return "Unknown";
+          }
+        };
+
+        if (pioneros) {
+          const aysenCenter = centroids.features.find(
+            (c: CentroidFeature) => c.properties.shapeName === pioneros.region
+          );
+
+          if (aysenCenter) {
+            new mapboxgl.Marker({ color: "#00d084", scale: 1.3 })
+              .setLngLat(aysenCenter.geometry.coordinates)
+              .setPopup(
+                new mapboxgl.Popup({ offset: 25 }).setHTML(`
+      <div class="p-2 w-48 flex flex-col gap-2">
+        <div class="w-full h-24 bg-gray-100 mb-2 overflow-hidden rounded">
+          ${
+            pioneros.image_url
+              ? `<img src="${pioneros.image_url}" alt="${pioneros.title}" class="w-full h-full object-cover" />`
+              : '<div class="w-full h-full flex items-center justify-center bg-gray-200 text-gray-400">Sin imagen</div>'
+          }
+        </div>
+        <h3 class="font-bold text-sm">${pioneros.title}</h3>
+        <p class="text-sm">Dificultad: ${translateDifficulty(pioneros.difficulty)}</p>
+        <a href="/missions/${
+          pioneros.id
+        }" class="text-white hover:underline text-sm bg-primarygreen p-2 rounded w-full text-center font-bold">Ver misión</a>
+      </div>
+    `)
+              )
+              .addTo(map.current);
+          }
+        }
 
         if (
           !chileData ||

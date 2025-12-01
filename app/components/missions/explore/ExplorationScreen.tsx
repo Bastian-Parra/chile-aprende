@@ -5,6 +5,7 @@ import Image from "next/image";
 import ResourceItem from "./ResourceItem";
 import HudResources from "./HudResource";
 import { toast } from "../../messages/Toast";
+import { useUser } from "@clerk/nextjs";
 
 interface Resource {
   id: string;
@@ -37,6 +38,8 @@ export default function ExplorationScreen({
 
   const totalScreens = mapData.backgrounds.length;
 
+  const { user } = useUser();
+
   const handleCollect = (type: string, id: string) => {
     setCollected((prev) => ({
       ...prev,
@@ -50,32 +53,38 @@ export default function ExplorationScreen({
 
   const screenResources = resources.filter((r) => r.screen === currentScreen);
 
- useEffect(() => {
-  const goals = objective;
-  const allReached = Object.keys(goals).every(
-    (key) => collected[key] >= goals[key]
-  );
+  useEffect(() => {
+    const goals = objective;
+    const allReached = Object.keys(goals).every(
+      (key) => collected[key] >= goals[key]
+    );
 
-  if (!allReached) return;
+    if (!allReached) return;
 
-  const finishExploration = async () => {
-    try {
-      await fetch(`/api/missions/complete-part`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ missionId, part: "exploration" }),
-      });
+    if (!user) return
 
-      window.location.href = `/missions/${missionId}/start`; // redirige al usuario al inicio de la misión
-    } catch (error) {
-      console.error("Error completing exploration:", error);
-    }
-  };
+    const storageKey = `collected_resources_${user.id}`;
 
-  finishExploration();
-}, [collected, missionId, objective]);
+    localStorage.setItem(storageKey, JSON.stringify(collected));
+
+    const finishExploration = async () => {
+      try {
+        await fetch(`/api/missions/complete-part`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ missionId, part: "exploration" }),
+        });
+
+        window.location.href = `/missions/${missionId}/start`; // redirige al usuario al inicio de la misión
+      } catch (error) {
+        console.error("Error completing exploration:", error);
+      }
+    };
+
+    finishExploration();
+  }, [collected, missionId, objective]);
 
   return (
     <div className="relative w-full h-screen overflow-hidden">

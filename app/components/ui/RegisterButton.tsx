@@ -1,3 +1,5 @@
+"use client";
+
 import { CSSProperties } from "react";
 import { SignUpButton } from "@clerk/nextjs";
 export default function RegisterButton({

@@ -23,6 +23,9 @@ importers:
       geojson:
         specifier: ^0.5.0
         version: 0.5.0
+      js-confetti:
+        specifier: ^0.13.1
+        version: 0.13.1
       mapbox-gl:
         specifier: ^3.16.0
         version: 3.16.0
@@ -1930,6 +1933,9 @@ packages:
   jiti@2.6.1:
     resolution: {integrity: sha512-ekilCSN1jwRvIbgeg/57YFh8qQDNbwDb9xT/qu2DAHbFFZUicIl4ygVaAvzveMhMVr3LnpSKTNnwt8PoOfmKhQ==}
     hasBin: true
+
+  js-confetti@0.13.1:
+    resolution: {integrity: sha512-Kau3apum0zYIvELfZv0lL5VY7dvzpbKi4Oq0XdfjDKdNZc/O+IeGRyLEej7GJ/1APbASvb+ZTWDxmTxxSFkTOg==}
 
   js-cookie@3.0.5:
     resolution: {integrity: sha512-cEiJEAEoIbWfCZYKWhVwFuvPX1gETRYPw6LlaTKoxD3s2AkXzkCjnp6h0V77ozyqj0jakteJ4YqDJT830+lVGw==}
@@ -5506,6 +5512,8 @@ snapshots:
       set-function-name: 2.0.2
 
   jiti@2.6.1: {}
+
+  js-confetti@0.13.1: {}
 
   js-cookie@3.0.5: {}
 
